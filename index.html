@@ -7,96 +7,133 @@
 <style>
 body{
 background:#0f172a;
-font-family:Arial;
+font-family:Arial,sans-serif;
 color:white;
 margin:0;
 padding:0;
 }
 
+/* Top bar */
 .top{
 display:flex;
 justify-content:space-between;
+align-items:center;
 padding:15px;
-background:#1e293b;
-font-size:18px;
+background:#111827;
+}
+
+.left{
+display:flex;
+gap:10px;
+font-size:14px;
 font-weight:bold;
 }
 
-.logo{
-text-align:center;
-font-size:24px;
+.right{
+font-size:18px;
 font-weight:bold;
-padding:15px;
 color:#38bdf8;
 }
 
+/* Banner */
 .banner{
 margin:15px;
-background:#1d4ed8;
-padding:20px;
-border-radius:15px;
-text-align:center;
-font-size:20px;
+height:150px;
+border-radius:20px;
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
 font-weight:bold;
 }
 
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
+/* Buttons */
+.menu{
 padding:15px;
+display:flex;
+flex-direction:column;
+gap:12px;
 }
 
 .card{
 background:#1e293b;
-padding:25px;
+padding:20px;
 border-radius:18px;
-text-align:center;
 font-size:18px;
 font-weight:bold;
+text-align:center;
 }
 
+/* Bottom nav */
 .bottom{
 position:fixed;
 bottom:0;
 width:100%;
-background:#1e293b;
+background:#111827;
 display:flex;
 justify-content:space-around;
-padding:15px 0;
-font-size:14px;
+padding:14px 0;
+font-size:13px;
+font-weight:bold;
 }
 </style>
 </head>
 
 <body>
 
+<!-- Top -->
 <div class="top">
+<div class="left">
 <div>👤 Profile</div>
 <div>🪙 Coins</div>
 </div>
 
-<div class="logo">
+<div class="right">
 💎 Diamond Drop BD
 </div>
-
-<div class="banner">
-WELCOME TO DIAMOND DROP BD
 </div>
 
-<div class="grid">
+<!-- Random Banner -->
+<div class="banner" id="banner">
+WELCOME
+</div>
+
+<!-- Middle Buttons -->
+<div class="menu">
 <div class="card">📋 Tasks</div>
 <div class="card">🎡 Spin</div>
 <div class="card">💥 Scratch</div>
 <div class="card">🎁 Redeem</div>
 </div>
 
+<!-- Bottom -->
 <div class="bottom">
 <div>🏠 Home</div>
-<div>🎁 Reward</div>
+<div>🎁 Daily</div>
 <div>🛒 Shop</div>
 <div>👥 Refer</div>
 </div>
+
+<script>
+const ads = [
+"https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1000",
+"https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1000",
+"https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=1000"
+];
+
+let index = 0;
+const banner = document.getElementById("banner");
+
+function changeBanner(){
+banner.style.backgroundImage = `url(${ads[index]})`;
+index = (index + 1) % ads.length;
+}
+
+changeBanner();
+setInterval(changeBanner, 3000);
+</script>
 
 </body>
 </html>
