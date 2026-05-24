@@ -5,111 +5,161 @@
 <title>Diamond Drop BD</title>
 
 <style>
-body{
-background:#0f172a;
-font-family:Arial,sans-serif;
-color:white;
+*{
 margin:0;
 padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
-/* Top bar */
+body{
+background:linear-gradient(180deg,#060b1f,#111827,#050816);
+color:white;
+padding-bottom:90px;
+}
+
+/* TOP BAR */
 .top{
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:15px;
-background:#111827;
+margin:12px;
+border-radius:22px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+box-shadow:0 0 15px rgba(0,255,255,0.2);
 }
 
 .left{
 display:flex;
-gap:10px;
-font-size:14px;
-font-weight:bold;
-}
-
-.right{
-font-size:18px;
-font-weight:bold;
-color:#38bdf8;
-}
-
-/* Banner */
-.banner{
-margin:15px;
-height:150px;
-border-radius:20px;
-background-size:cover;
-background-position:center;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:22px;
-font-weight:bold;
-}
-
-/* Buttons */
-.menu{
-padding:15px;
-display:flex;
-flex-direction:column;
 gap:12px;
 }
 
-.card{
-background:#1e293b;
-padding:20px;
+.box{
+background:linear-gradient(135deg,#172554,#1e3a8a);
+padding:12px 16px;
 border-radius:18px;
-font-size:18px;
 font-weight:bold;
-text-align:center;
+box-shadow:0 0 12px rgba(0,140,255,0.4);
+border:1px solid rgba(255,255,255,0.1);
 }
 
-/* Bottom nav */
+.logo{
+font-size:20px;
+font-weight:bold;
+color:#4fd1ff;
+text-shadow:0 0 15px #00ccff;
+}
+
+/* AD BANNER */
+.banner{
+height:160px;
+margin:14px;
+border-radius:25px;
+background-size:cover;
+background-position:center;
+box-shadow:0 0 20px rgba(128,0,255,0.4);
+overflow:hidden;
+}
+
+/* MENU CARDS */
+.menu{
+padding:14px;
+display:flex;
+flex-direction:column;
+gap:16px;
+}
+
+.card{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:22px;
+border-radius:25px;
+font-size:22px;
+font-weight:bold;
+transition:0.3s;
+box-shadow:0 0 18px rgba(255,255,255,0.15);
+}
+
+.card:active{
+transform:scale(0.96);
+}
+
+.tasks{
+background:linear-gradient(90deg,#ff7b00,#ff3c00);
+}
+
+.spin{
+background:linear-gradient(90deg,#8a2be2,#ff00ff);
+}
+
+.scratch{
+background:linear-gradient(90deg,#0066ff,#00ccff);
+}
+
+.redeem{
+background:linear-gradient(90deg,#00a651,#00ff80);
+}
+
+.arrow{
+font-size:30px;
+}
+
+/* BOTTOM MENU */
 .bottom{
 position:fixed;
 bottom:0;
 width:100%;
-background:#111827;
 display:flex;
 justify-content:space-around;
 padding:18px 0;
+background:rgba(8,15,35,0.95);
+backdrop-filter:blur(12px);
+border-top:2px solid #00ccff;
 font-size:18px;
 font-weight:bold;
-border-top:2px solid #38bdf8;
+box-shadow:0 -5px 20px rgba(0,255,255,0.15);
 }
 </style>
 </head>
 
 <body>
 
-<!-- Top -->
 <div class="top">
 <div class="left">
-<div>👤 Profile</div>
-<div>🪙 Coins</div>
+<div class="box">👤 Profile</div>
+<div class="box">🪙 Coins: 250</div>
 </div>
 
-<div class="right">
+<div class="logo">
 💎 Diamond Drop BD
 </div>
 </div>
 
-<!-- Random Banner -->
-<div class="banner" id="banner">
-WELCOME
-</div>
+<div class="banner" id="banner"></div>
 
-<!-- Middle Buttons -->
 <div class="menu">
-<div class="card">📋 Tasks</div>
-<div class="card">🎡 Spin</div>
-<div class="card">💥 Scratch</div>
-<div class="card">🎁 Redeem</div>
+
+<div class="card tasks">
+📋 Tasks <span class="arrow">➜</span>
 </div>
 
-<!-- Bottom -->
+<div class="card spin">
+🎡 Spin <span class="arrow">➜</span>
+</div>
+
+<div class="card scratch">
+💥 Scratch <span class="arrow">➜</span>
+</div>
+
+<div class="card redeem">
+🎁 Redeem <span class="arrow">➜</span>
+</div>
+
+</div>
+
 <div class="bottom">
 <div>🏠 Home</div>
 <div>🎁 Daily</div>
@@ -119,21 +169,21 @@ WELCOME
 
 <script>
 const ads = [
-"https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1000",
-"https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1000",
-"https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=1000"
+"https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200",
+"https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1200",
+"https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=1200"
 ];
 
 let index = 0;
 const banner = document.getElementById("banner");
 
 function changeBanner(){
-banner.style.backgroundImage = `url(${ads[index]})`;
-index = (index + 1) % ads.length;
+banner.style.backgroundImage=`url(${ads[index]})`;
+index=(index+1)%ads.length;
 }
 
 changeBanner();
-setInterval(changeBanner, 3000);
+setInterval(changeBanner,3000);
 </script>
 
 </body>
