@@ -13,158 +13,223 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:linear-gradient(180deg,#060b1f,#111827,#050816);
+background:
+radial-gradient(circle at top,#132c63 0%,#050816 40%,#000000 100%);
 color:white;
-padding-bottom:90px;
+overflow-x:hidden;
+padding-bottom:110px;
 }
 
-/* TOP BAR */
+/* Moving glow background */
+body::before{
+content:'';
+position:fixed;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle,#00ccff55 1px,transparent 1px),
+radial-gradient(circle,#ffd70055 1px,transparent 1px);
+background-size:80px 80px;
+animation:moveBg 10s linear infinite;
+z-index:-1;
+}
+
+@keyframes moveBg{
+0%{transform:translateY(0);}
+100%{transform:translateY(-80px);}
+}
+
+/* Top Premium Bar */
 .top{
 display:flex;
 justify-content:space-between;
 align-items:center;
+margin:15px;
 padding:15px;
-margin:12px;
-border-radius:22px;
+border-radius:28px;
 background:rgba(255,255,255,0.08);
-backdrop-filter:blur(10px);
-box-shadow:0 0 15px rgba(0,255,255,0.2);
+backdrop-filter:blur(14px);
+border:1px solid rgba(255,255,255,0.15);
+box-shadow:
+0 0 20px rgba(0,170,255,.3),
+0 0 30px rgba(255,215,0,.2);
 }
 
-.left{
-display:flex;
-gap:12px;
-}
-
-.box{
-background:linear-gradient(135deg,#172554,#1e3a8a);
-padding:12px 16px;
-border-radius:18px;
+.profile-box,
+.coin-box{
+padding:14px 16px;
+border-radius:20px;
+background:linear-gradient(135deg,#101827,#172554);
+border:1px solid rgba(255,255,255,.1);
+box-shadow:0 0 18px rgba(0,180,255,.25);
 font-weight:bold;
-box-shadow:0 0 12px rgba(0,140,255,0.4);
-border:1px solid rgba(255,255,255,0.1);
+font-size:15px;
 }
 
 .logo{
-font-size:20px;
-font-weight:bold;
-color:#4fd1ff;
-text-shadow:0 0 15px #00ccff;
+font-size:24px;
+font-weight:900;
+background:linear-gradient(to right,#00d4ff,#ffd700);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+text-shadow:0 0 20px rgba(0,200,255,.4);
 }
 
-/* AD BANNER */
+/* Banner */
 .banner{
-height:160px;
-margin:14px;
-border-radius:25px;
+margin:15px;
+height:180px;
+border-radius:28px;
 background-size:cover;
 background-position:center;
-box-shadow:0 0 20px rgba(128,0,255,0.4);
-overflow:hidden;
+box-shadow:
+0 0 25px rgba(0,200,255,.25),
+0 0 30px rgba(255,215,0,.15);
+border:2px solid rgba(255,255,255,.1);
 }
 
-/* MENU CARDS */
+/* Cards */
 .menu{
-padding:14px;
+padding:15px;
 display:flex;
 flex-direction:column;
-gap:16px;
+gap:18px;
 }
 
 .card{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:22px;
-border-radius:25px;
-font-size:22px;
-font-weight:bold;
-transition:0.3s;
-box-shadow:0 0 18px rgba(255,255,255,0.15);
+padding:25px;
+border-radius:28px;
+font-size:24px;
+font-weight:900;
+transition:.2s;
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.12);
+}
+
+.card small{
+display:block;
+font-size:14px;
+font-weight:normal;
+margin-top:5px;
+opacity:.9;
 }
 
 .card:active{
-transform:scale(0.96);
+transform:scale(.96);
 }
 
 .tasks{
-background:linear-gradient(90deg,#ff7b00,#ff3c00);
+background:linear-gradient(135deg,#ff9800,#ff4d00);
+box-shadow:0 0 25px rgba(255,100,0,.4);
 }
 
 .spin{
-background:linear-gradient(90deg,#8a2be2,#ff00ff);
+background:linear-gradient(135deg,#6a00ff,#d000ff);
+box-shadow:0 0 25px rgba(162,0,255,.45);
 }
 
 .scratch{
-background:linear-gradient(90deg,#0066ff,#00ccff);
+background:linear-gradient(135deg,#0099ff,#00e5ff);
+box-shadow:0 0 25px rgba(0,200,255,.4);
 }
 
 .redeem{
-background:linear-gradient(90deg,#00a651,#00ff80);
+background:linear-gradient(135deg,#00b140,#00ff88);
+box-shadow:0 0 25px rgba(0,255,120,.35);
 }
 
 .arrow{
-font-size:30px;
+font-size:32px;
 }
 
-/* BOTTOM MENU */
+/* Bottom nav */
 .bottom{
 position:fixed;
 bottom:0;
+left:0;
 width:100%;
 display:flex;
 justify-content:space-around;
 padding:18px 0;
-background:rgba(8,15,35,0.95);
-backdrop-filter:blur(12px);
-border-top:2px solid #00ccff;
+background:rgba(5,10,25,.92);
+backdrop-filter:blur(15px);
+border-top:2px solid rgba(0,212,255,.25);
+box-shadow:0 -5px 20px rgba(0,0,0,.5);
+}
+
+.bottom div{
 font-size:18px;
 font-weight:bold;
-box-shadow:0 -5px 20px rgba(0,255,255,0.15);
+text-align:center;
 }
 </style>
 </head>
 
 <body>
 
+<!-- Top -->
 <div class="top">
-<div class="left">
-<div class="box">👤 Profile</div>
-<div class="box">🪙 Coins: 250</div>
+
+<div style="display:flex;gap:10px;">
+<div class="profile-box">👤 Profile</div>
+<div class="coin-box">🪙 Coins: 250</div>
 </div>
 
 <div class="logo">
 💎 Diamond Drop BD
 </div>
+
 </div>
 
+<!-- Sliding Banner -->
 <div class="banner" id="banner"></div>
 
+<!-- Menu -->
 <div class="menu">
 
 <div class="card tasks">
-📋 Tasks <span class="arrow">➜</span>
+<div>
+📋 TASKS
+<small>Complete Tasks & Earn Coins</small>
+</div>
+<span class="arrow">➜</span>
 </div>
 
 <div class="card spin">
-🎡 Spin <span class="arrow">➜</span>
+<div>
+🎡 SPIN
+<small>Spin & Win Big Rewards</small>
+</div>
+<span class="arrow">➜</span>
 </div>
 
 <div class="card scratch">
-💥 Scratch <span class="arrow">➜</span>
+<div>
+💥 SCRATCH
+<small>Scratch & Win Coins</small>
+</div>
+<span class="arrow">➜</span>
 </div>
 
 <div class="card redeem">
-🎁 Redeem <span class="arrow">➜</span>
+<div>
+🎁 REDEEM
+<small>Redeem Your Rewards</small>
+</div>
+<span class="arrow">➜</span>
 </div>
 
 </div>
 
+<!-- Bottom -->
 <div class="bottom">
-<div>🏠 Home</div>
-<div>🎁 Daily</div>
-<div>🛒 Shop</div>
-<div>👥 Refer</div>
+<div>🏠<br>Home</div>
+<div>🎁<br>Daily</div>
+<div>🛒<br>Shop</div>
+<div>👥<br>Refer</div>
 </div>
 
 <script>
@@ -174,12 +239,12 @@ const ads = [
 "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=1200"
 ];
 
-let index = 0;
+let current = 0;
 const banner = document.getElementById("banner");
 
 function changeBanner(){
-banner.style.backgroundImage=`url(${ads[index]})`;
-index=(index+1)%ads.length;
+banner.style.backgroundImage=`url(${ads[current]})`;
+current=(current+1)%ads.length;
 }
 
 changeBanner();
