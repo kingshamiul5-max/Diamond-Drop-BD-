@@ -1,129 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Diamond Drop BD</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Orbitron',sans-serif;
+font-family:Arial,sans-serif;
 }
 
 body{
-background:#050816;
+background:#060b16;
+color:white;
 overflow-x:hidden;
-color:#fff;
 padding-bottom:100px;
 }
 
-/* Premium Background */
-body::before{
-content:'';
+/* Animated Gaming Background */
+.bg{
 position:fixed;
 width:100%;
 height:100%;
 top:0;
 left:0;
 background:
-radial-gradient(circle at top left,#00d0ff25,transparent 30%),
-radial-gradient(circle at top right,#ffd70015,transparent 30%),
-radial-gradient(circle at bottom,#7b00ff20,transparent 35%);
-z-index:-2;
-animation:bgMove 8s infinite alternate ease-in-out;
+radial-gradient(circle at 20% 20%, rgba(0,180,255,.25), transparent 25%),
+radial-gradient(circle at 80% 30%, rgba(255,215,0,.18), transparent 25%),
+radial-gradient(circle at 50% 80%, rgba(140,0,255,.18), transparent 30%);
+animation:moveBg 8s infinite alternate ease-in-out;
+z-index:-1;
 }
 
-@keyframes bgMove{
-100%{
-transform:translateY(-20px);
-}
+@keyframes moveBg{
+0%{transform:translateY(0);}
+100%{transform:translateY(-30px);}
 }
 
-/* Header */
-.header{
-margin:18px;
-padding:18px;
-border-radius:30px;
-background:rgba(255,255,255,.06);
-backdrop-filter:blur(18px);
-border:1px solid rgba(255,255,255,.08);
+/* Top Bar */
+.top{
 display:flex;
 justify-content:space-between;
 align-items:center;
-box-shadow:0 0 30px rgba(0,195,255,.12);
+margin:15px;
+padding:15px;
+border-radius:28px;
+background:rgba(255,255,255,.06);
+backdrop-filter:blur(14px);
+border:1px solid rgba(255,255,255,.08);
+box-shadow:0 0 35px rgba(0,170,255,.18);
 }
 
-.profile{
+.left{
 display:flex;
-align-items:center;
 gap:12px;
 }
 
-.avatar{
-width:60px;
-height:60px;
-border-radius:50%;
-background:linear-gradient(135deg,#00d0ff,#ffd700);
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:28px;
-box-shadow:0 0 25px #00d0ff55;
-}
-
-.info h3{
-font-size:16px;
-}
-
-.info p{
-font-size:11px;
-opacity:.7;
-}
-
-.coins{
+.badge{
 padding:14px 18px;
-border-radius:20px;
-background:rgba(255,255,255,.08);
+border-radius:18px;
+background:linear-gradient(145deg,#101a2f,#182848);
+box-shadow:
+0 0 15px rgba(0,180,255,.2),
+inset 0 0 10px rgba(255,255,255,.05);
+font-weight:bold;
+font-size:15px;
 border:1px solid rgba(255,255,255,.08);
-box-shadow:0 0 15px rgba(255,215,0,.15);
-font-size:14px;
 }
 
-/* Logo */
 .logo{
-text-align:center;
-font-size:28px;
+font-size:23px;
 font-weight:900;
-margin-top:5px;
-background:linear-gradient(to right,#00d0ff,#ffd700);
+background:linear-gradient(to right,#00d4ff,#ffd700,#00d4ff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+text-shadow:0 0 20px rgba(0,212,255,.3);
 }
 
-/* Banner */
+/* Banner Slider */
 .banner{
-margin:18px;
+margin:15px;
 height:180px;
-border-radius:30px;
-overflow:hidden;
-position:relative;
-box-shadow:0 0 30px rgba(0,212,255,.15);
+border-radius:28px;
+background-size:cover;
+background-position:center;
+box-shadow:
+0 0 25px rgba(0,180,255,.18),
+0 0 35px rgba(255,215,0,.12);
+border:2px solid rgba(255,255,255,.08);
 }
 
-.banner img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-/* Cards */
+/* Menu Cards */
 .menu{
-padding:18px;
+padding:15px;
 display:flex;
 flex-direction:column;
 gap:18px;
@@ -131,85 +102,75 @@ gap:18px;
 
 .card{
 position:relative;
-padding:22px;
-height:100px;
-border-radius:28px;
-background:rgba(255,255,255,.06);
-backdrop-filter:blur(16px);
-border:1px solid rgba(255,255,255,.08);
-display:flex;
-justify-content:space-between;
-align-items:center;
+height:120px;
+border-radius:30px;
 overflow:hidden;
-box-shadow:0 8px 25px rgba(0,0,0,.35);
-transition:.2s;
+box-shadow:0 0 35px rgba(0,0,0,.35);
+transition:.25s;
+border:1px solid rgba(255,255,255,.08);
 }
 
 .card:active{
 transform:scale(.97);
 }
 
-.card::before{
-content:'';
-position:absolute;
-right:-40px;
-top:-40px;
-width:140px;
-height:140px;
-background:rgba(255,255,255,.04);
-border-radius:50%;
+.card img{
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(.65);
 }
 
-.tasks{border-left:5px solid orange;}
-.spin{border-left:5px solid violet;}
-.scratch{border-left:5px solid cyan;}
-.redeem{border-left:5px solid #00ff99;}
+.overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:25px;
+background:linear-gradient(
+90deg,
+rgba(0,0,0,.65),
+rgba(0,0,0,.15)
+);
+}
 
 .title{
-font-size:22px;
+font-size:28px;
 font-weight:900;
+text-shadow:0 0 15px rgba(255,255,255,.3);
 }
 
 .sub{
-font-size:11px;
-opacity:.75;
+font-size:14px;
 margin-top:5px;
+opacity:.9;
 }
 
 .arrow{
-font-size:32px;
-color:#00d0ff;
+font-size:36px;
+font-weight:bold;
 }
 
-/* Bottom Menu */
+/* Bottom Nav */
 .bottom{
 position:fixed;
-left:12px;
-right:12px;
-bottom:12px;
-padding:18px 0;
+bottom:0;
+width:100%;
 display:flex;
 justify-content:space-around;
-border-radius:28px;
-background:rgba(10,15,30,.88);
-backdrop-filter:blur(18px);
-border:2px solid rgba(0,212,255,.25);
-box-shadow:
-0 0 25px rgba(0,212,255,.25),
-0 0 35px rgba(255,215,0,.08);
-animation:glow 2s infinite alternate;
-}
-
-@keyframes glow{
-100%{
-box-shadow:
-0 0 35px rgba(0,212,255,.4),
-0 0 50px rgba(255,215,0,.15);
-}
+padding:18px 0;
+background:rgba(8,12,25,.92);
+backdrop-filter:blur(15px);
+border-top:1px solid rgba(255,255,255,.08);
+box-shadow:0 -10px 25px rgba(0,0,0,.5);
 }
 
 .bottom div{
-font-size:13px;
+font-size:16px;
 font-weight:bold;
 text-align:center;
 }
@@ -218,63 +179,73 @@ text-align:center;
 
 <body>
 
-<div class="logo">💎 Diamond Drop BD</div>
+<div class="bg"></div>
 
-<div class="header">
-<div class="profile">
-<div class="avatar">👤</div>
+<!-- Top -->
+<div class="top">
+<div class="left">
+<div class="badge">👤 Profile</div>
+<div class="badge">🪙 Coins: 250</div>
+</div>
 
-<div class="info">
-<h3>Profile</h3>
-<p>Gaming Rewards User</p>
+<div class="logo">
+💎 Diamond Drop BD
 </div>
 </div>
 
-<div class="coins">
-🪙 250
-</div>
-</div>
+<!-- Banner -->
+<div class="banner" id="banner"></div>
 
-<div class="banner">
-<img id="slide" src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200">
-</div>
-
+<!-- Cards -->
 <div class="menu">
 
-<div class="card tasks">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200">
+<div class="overlay">
 <div>
 <div class="title">📋 TASKS</div>
-<div class="sub">Complete tasks & earn</div>
+<div class="sub">Complete missions & earn rewards</div>
 </div>
 <div class="arrow">➜</div>
 </div>
+</div>
 
-<div class="card spin">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1200">
+<div class="overlay">
 <div>
 <div class="title">🎡 SPIN</div>
-<div class="sub">Spin and win rewards</div>
+<div class="sub">Spin & win premium rewards</div>
 </div>
 <div class="arrow">➜</div>
 </div>
+</div>
 
-<div class="card scratch">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=1200">
+<div class="overlay">
 <div>
 <div class="title">💥 SCRATCH</div>
-<div class="sub">Scratch lucky card</div>
+<div class="sub">Scratch lucky rewards</div>
 </div>
 <div class="arrow">➜</div>
 </div>
+</div>
 
-<div class="card redeem">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?w=1200">
+<div class="overlay">
 <div>
 <div class="title">🎁 REDEEM</div>
-<div class="sub">Claim rewards</div>
+<div class="sub">Claim your gifts & rewards</div>
 </div>
 <div class="arrow">➜</div>
 </div>
+</div>
 
 </div>
 
+<!-- Bottom -->
 <div class="bottom">
 <div>🏠<br>Home</div>
 <div>🎁<br>Daily</div>
@@ -283,19 +254,22 @@ text-align:center;
 </div>
 
 <script>
-const imgs=[
+const ads = [
 "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200",
 "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1200",
 "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=1200"
 ];
 
 let i=0;
-const slide=document.getElementById('slide');
+const banner=document.getElementById("banner");
 
-setInterval(()=>{
-i=(i+1)%imgs.length;
-slide.src=imgs[i];
-},3000);
+function slide(){
+banner.style.backgroundImage=`url(${ads[i]})`;
+i=(i+1)%ads.length;
+}
+
+slide();
+setInterval(slide,3000);
 </script>
 
 </body>
