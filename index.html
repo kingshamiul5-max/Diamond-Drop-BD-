@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Diamond Drop BD</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -16,121 +16,137 @@ font-family:'Orbitron',sans-serif;
 }
 
 body{
-background:#040714;
+background:#070b18;
 overflow-x:hidden;
 color:white;
 padding-bottom:120px;
 }
 
-/* Animated Background */
-.bg{
+/* Animated Gaming Background */
+body::before{
+content:'';
 position:fixed;
-top:0;
-left:0;
 width:100%;
 height:100%;
-z-index:-2;
+top:0;
+left:0;
 background:
-radial-gradient(circle at 20% 20%, rgba(0,170,255,.18), transparent 30%),
-radial-gradient(circle at 80% 30%, rgba(255,215,0,.12), transparent 30%),
-radial-gradient(circle at 50% 80%, rgba(130,0,255,.15), transparent 30%);
-animation:bgMove 8s infinite alternate ease-in-out;
+radial-gradient(circle at 20% 20%,rgba(0,183,255,.20),transparent 25%),
+radial-gradient(circle at 80% 30%,rgba(255,215,0,.12),transparent 25%),
+radial-gradient(circle at 50% 80%,rgba(145,0,255,.12),transparent 30%);
+animation:bgMove 10s infinite alternate;
+z-index:-3;
 }
 
 @keyframes bgMove{
+100%{transform:translateY(-40px);}
+}
+
+/* Floating Lights */
+.light{
+position:fixed;
+border-radius:50%;
+filter:blur(8px);
+z-index:-2;
+animation:float 8s infinite alternate ease-in-out;
+}
+
+.l1{
+width:120px;height:120px;
+background:#00c3ff33;
+top:10%;left:10%;
+}
+
+.l2{
+width:150px;height:150px;
+background:#ffd90022;
+top:60%;right:5%;
+}
+
+.l3{
+width:100px;height:100px;
+background:#8c00ff33;
+bottom:15%;left:40%;
+}
+
+@keyframes float{
 100%{transform:translateY(-30px);}
 }
 
-/* Floating Neon Lights */
-.particles span{
-position:fixed;
-width:10px;
-height:10px;
-background:#00d4ff;
-border-radius:50%;
-box-shadow:0 0 15px #00d4ff;
-animation:float 12s linear infinite;
-z-index:-1;
-}
-
-.particles span:nth-child(1){left:10%;top:90%;}
-.particles span:nth-child(2){left:40%;top:80%;}
-.particles span:nth-child(3){left:75%;top:85%;}
-.particles span:nth-child(4){left:60%;top:95%;}
-
-@keyframes float{
-0%{transform:translateY(0);}
-100%{transform:translateY(-110vh);}
-}
-
-/* TOP PROFILE */
-.profile-panel{
+/* Header */
+.header{
 margin:18px;
 padding:20px;
 border-radius:35px;
 background:rgba(255,255,255,.05);
-backdrop-filter:blur(18px);
+backdrop-filter:blur(20px);
 border:1px solid rgba(255,255,255,.08);
-box-shadow:
-0 0 25px rgba(0,180,255,.15),
-0 0 35px rgba(255,215,0,.08);
 display:flex;
 justify-content:space-between;
 align-items:center;
+box-shadow:
+0 0 30px rgba(0,195,255,.12),
+0 0 40px rgba(255,215,0,.08);
 }
 
-.left{
+.profile{
 display:flex;
-gap:12px;
 align-items:center;
+gap:12px;
 }
 
 .avatar{
-width:60px;
-height:60px;
+width:62px;
+height:62px;
 border-radius:50%;
 background:linear-gradient(135deg,#00d4ff,#ffd700);
 display:flex;
 justify-content:center;
 align-items:center;
 font-size:28px;
-box-shadow:0 0 25px rgba(0,212,255,.35);
+box-shadow:0 0 30px rgba(0,212,255,.4);
 }
 
-.info{
-font-size:13px;
+.name{
+font-size:15px;
+font-weight:700;
+}
+
+.sub{
+font-size:11px;
+opacity:.7;
 }
 
 .coins{
 padding:14px 18px;
 border-radius:22px;
-background:linear-gradient(145deg,#121d38,#182848);
+background:linear-gradient(135deg,#141d38,#1c294d);
 border:1px solid rgba(255,255,255,.08);
-box-shadow:0 0 20px rgba(255,215,0,.15);
+box-shadow:0 0 18px rgba(255,215,0,.12);
 font-size:14px;
 }
 
-/* Logo */
 .logo{
 text-align:center;
 font-size:30px;
 font-weight:900;
-margin-top:8px;
-background:linear-gradient(to right,#00d4ff,#ffd700);
+margin-top:5px;
+background:linear-gradient(to right,#00d4ff,#ffd700,#00d4ff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-text-shadow:0 0 20px rgba(0,212,255,.2);
+text-shadow:0 0 18px rgba(0,212,255,.25);
 }
 
 /* Banner */
 .banner{
 margin:18px;
-height:190px;
+height:210px;
 border-radius:35px;
 overflow:hidden;
 position:relative;
-border:1px solid rgba(255,255,255,.08);
-box-shadow:0 0 30px rgba(0,180,255,.15);
+box-shadow:
+0 0 25px rgba(0,212,255,.12),
+0 0 40px rgba(255,215,0,.08);
 }
 
 .banner img{
@@ -139,7 +155,7 @@ height:100%;
 object-fit:cover;
 }
 
-/* Menu */
+/* Cards */
 .menu{
 padding:18px;
 display:flex;
@@ -149,18 +165,18 @@ gap:20px;
 
 .card{
 position:relative;
-height:110px;
+height:115px;
 border-radius:32px;
-background:rgba(255,255,255,.05);
-backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,.08);
+padding:22px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:25px;
 overflow:hidden;
-box-shadow:0 0 25px rgba(0,0,0,.35);
-transition:.25s;
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,.08);
+box-shadow:0 10px 30px rgba(0,0,0,.35);
+transition:.2s;
 }
 
 .card:active{
@@ -172,10 +188,26 @@ content:'';
 position:absolute;
 width:180px;
 height:180px;
-background:rgba(255,255,255,.06);
+background:rgba(255,255,255,.04);
 border-radius:50%;
 right:-50px;
-top:-50px;
+top:-60px;
+}
+
+.tasks{
+border-left:5px solid #ff9900;
+}
+
+.spin{
+border-left:5px solid #b300ff;
+}
+
+.scratch{
+border-left:5px solid #00c3ff;
+}
+
+.redeem{
+border-left:5px solid #00ff80;
 }
 
 .title{
@@ -183,51 +215,48 @@ font-size:25px;
 font-weight:900;
 }
 
-.sub{
+.small{
 font-size:12px;
-opacity:.8;
+opacity:.75;
 margin-top:5px;
 }
 
-.tasks{border-left:5px solid #ff8800;}
-.spin{border-left:5px solid #b300ff;}
-.scratch{border-left:5px solid #00d4ff;}
-.redeem{border-left:5px solid #00ff88;}
-
 .arrow{
-font-size:34px;
+font-size:35px;
+color:#00d4ff;
+text-shadow:0 0 15px #00d4ff;
 }
 
 /* Bottom Menu */
 .bottom{
 position:fixed;
-bottom:14px;
+bottom:15px;
 left:12px;
 right:12px;
-border-radius:28px;
+padding:18px 0;
 display:flex;
 justify-content:space-around;
-padding:18px 0;
-background:rgba(10,15,35,.78);
+border-radius:28px;
+background:rgba(8,12,25,.85);
 backdrop-filter:blur(18px);
-border:2px solid rgba(0,212,255,.35);
+border:2px solid rgba(0,212,255,.25);
 box-shadow:
-0 0 20px rgba(0,212,255,.25),
-0 0 35px rgba(255,215,0,.12);
+0 0 25px rgba(0,212,255,.2),
+0 0 35px rgba(255,215,0,.1);
 animation:laser 2s infinite alternate;
 }
 
 @keyframes laser{
 100%{
 box-shadow:
-0 0 30px rgba(0,212,255,.4),
+0 0 35px rgba(0,212,255,.35),
 0 0 45px rgba(255,215,0,.18);
 }
 }
 
 .bottom div{
-font-size:14px;
 text-align:center;
+font-size:14px;
 font-weight:bold;
 }
 </style>
@@ -235,27 +264,25 @@ font-weight:bold;
 
 <body>
 
-<div class="bg"></div>
-
-<div class="particles">
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-</div>
+<div class="light l1"></div>
+<div class="light l2"></div>
+<div class="light l3"></div>
 
 <div class="logo">💎 Diamond Drop BD</div>
 
-<div class="profile-panel">
-<div class="left">
+<div class="header">
+<div class="profile">
 <div class="avatar">🎮</div>
-<div class="info">
-<h3>Player</h3>
-<p>Gaming Rewards</p>
+
+<div>
+<div class="name">Diamond Player</div>
+<div class="sub">Gaming Rewards</div>
 </div>
 </div>
 
-<div class="coins">🪙 250 Coins</div>
+<div class="coins">
+🪙 250 Coins
+</div>
 </div>
 
 <div class="banner">
@@ -266,32 +293,32 @@ font-weight:bold;
 
 <div class="card tasks">
 <div>
-<div class="title">📋 Tasks</div>
-<div class="sub">Complete missions</div>
+<div class="title">📋 TASKS</div>
+<div class="small">Complete tasks & earn rewards</div>
 </div>
 <div class="arrow">➜</div>
 </div>
 
 <div class="card spin">
 <div>
-<div class="title">🎡 Spin</div>
-<div class="sub">Win premium rewards</div>
+<div class="title">🎡 SPIN</div>
+<div class="small">Spin and win premium gifts</div>
 </div>
 <div class="arrow">➜</div>
 </div>
 
 <div class="card scratch">
 <div>
-<div class="title">💥 Scratch</div>
-<div class="sub">Lucky rewards</div>
+<div class="title">💥 SCRATCH</div>
+<div class="small">Scratch lucky cards</div>
 </div>
 <div class="arrow">➜</div>
 </div>
 
 <div class="card redeem">
 <div>
-<div class="title">🎁 Redeem</div>
-<div class="sub">Claim gifts</div>
+<div class="title">🎁 REDEEM</div>
+<div class="small">Claim your rewards</div>
 </div>
 <div class="arrow">➜</div>
 </div>
