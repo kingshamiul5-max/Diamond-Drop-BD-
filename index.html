@@ -219,7 +219,7 @@ font-weight:bold;
 <div class="top">
 <div class="left">
 <div class="badge">👤 Profile</div>
-<div class="badge">🪙 Coins: 250</div>
+<div class="badge" id="coinBox">🪙 Coins: <span id="coins">0</span></div>
 </div>
 
 <div class="logo">
@@ -303,6 +303,21 @@ setInterval(()=>{
 current = (current + 1) % images.length;
 slider.src = images[current];
 },3000);
+// Coin System
+let coins = localStorage.getItem("coins");
+
+if(coins === null){
+coins = 0;
+localStorage.setItem("coins", coins);
+}
+
+document.getElementById("coins").innerText = coins;
+
+function addCoins(amount){
+coins = parseInt(coins) + amount;
+localStorage.setItem("coins", coins);
+document.getElementById("coins").innerText = coins;
+  }
 </script>
 
 </body>
