@@ -246,7 +246,7 @@ font-weight:bold;
 </div>
 </div>
 
-<div class="card" onclick="spinReward()">
+<div class="card" onclick="openSpin()">
 <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1200">
 <div class="overlay">
 <div>
@@ -379,7 +379,119 @@ alert(
 );
 
 }
+  function openSpin(){
+document.getElementById("spinPopup").style.display="flex";
+}
+
+function closeSpin(){
+document.getElementById("spinPopup").style.display="none";
+}
+
+function spinWheel(){
+
+const wheel =
+document.getElementById("wheel");
+
+let rotate =
+Math.floor(Math.random()*3000)+3000;
+
+wheel.style.transform =
+"rotate(" + rotate + "deg)";
+
+setTimeout(()=>{
+alert("🎉 Spin system next step!");
+},5000);
+
+                        }
 </script>
+
+ <!-- Spin Popup -->
+<div id="spinPopup" style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.85);
+z-index:999;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+">
+
+<div style="
+width:280px;
+height:280px;
+border-radius:50%;
+border:8px solid gold;
+background:conic-gradient(
+#00d4ff 0deg 36deg,
+#111 36deg 72deg,
+#00d4ff 72deg 108deg,
+#111 108deg 144deg,
+#00d4ff 144deg 180deg,
+#111 180deg 216deg,
+#00d4ff 216deg 252deg,
+#111 252deg 288deg,
+#00d4ff 288deg 324deg,
+#111 324deg 360deg
+);
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+transition:5s ease-out;
+" id="wheel">
+
+<div style="
+width:80px;
+height:80px;
+border-radius:50%;
+background:gold;
+display:flex;
+justify-content:center;
+align-items:center;
+font-weight:bold;
+color:black;
+">
+SPIN
+</div>
+
+</div>
+
+<div style="
+font-size:50px;
+margin-top:-20px;
+color:red;
+">
+⬆
+</div>
+
+<button onclick="spinWheel()" style="
+margin-top:20px;
+padding:14px 30px;
+border:none;
+border-radius:20px;
+font-size:18px;
+font-weight:bold;
+background:gold;
+">
+Spin Now
+</button>
+
+<button onclick="closeSpin()" style="
+margin-top:12px;
+padding:10px 25px;
+border:none;
+border-radius:20px;
+background:#333;
+color:white;
+">
+Close
+</button>
+
+</div> 
 
 </body>
 </html>
