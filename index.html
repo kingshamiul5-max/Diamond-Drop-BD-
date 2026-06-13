@@ -246,7 +246,7 @@ font-weight:bold;
 </div>
 </div>
 
-<div class="card">
+<div class="card" onclick="spinReward()">
 <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1200">
 <div class="overlay">
 <div>
@@ -290,6 +290,8 @@ font-weight:bold;
 </div>
 
 <script>
+<script>
+// Banner Slider
 const images = [
 "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200",
 "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1200",
@@ -303,7 +305,8 @@ setInterval(()=>{
 current = (current + 1) % images.length;
 slider.src = images[current];
 },3000);
-// Coin System
+
+// COIN SYSTEM
 let coins = localStorage.getItem("coins");
 
 if(coins === null){
@@ -317,7 +320,67 @@ function addCoins(amount){
 coins = parseInt(coins) + amount;
 localStorage.setItem("coins", coins);
 document.getElementById("coins").innerText = coins;
-  }
+}
+
+// NORMAL SPIN SYSTEM (24 HOURS)
+function spinReward(){
+
+let lastSpin = localStorage.getItem("lastSpin");
+let now = Date.now();
+
+if(lastSpin && (now - lastSpin < 86400000)){
+
+let remaining =
+86400000 - (now - lastSpin);
+
+let hours =
+Math.floor(remaining / (1000*60*60));
+
+let minutes =
+Math.floor((remaining % (1000*60*60)) / (1000*60));
+
+alert(
+"⏳ Free Spin already used!\n\nTry again in: "
++ hours + "h "
++ minutes + "m"
+);
+
+return;
+}
+
+let chance = Math.random();
+let reward;
+
+// 70% → 100-500
+if(chance < 0.70){
+reward =
+Math.floor(Math.random() * 401) + 100;
+}
+
+// 25% → 500-800
+else if(chance < 0.95){
+reward =
+Math.floor(Math.random() * 301) + 500;
+}
+
+// 5% → 900-1000 (RARE)
+else{
+reward =
+Math.floor(Math.random() * 101) + 900;
+}
+
+addCoins(reward);
+
+localStorage.setItem("lastSpin", now);
+
+alert(
+"🎉 Congratulations!\n\nYou won "
++ reward +
+" Coins!"
+);
+
+}
+</script>
 </script>
 
 </body>
