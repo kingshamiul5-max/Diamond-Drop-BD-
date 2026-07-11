@@ -239,7 +239,41 @@ font-size:13px;
 opacity:.8;
 
 }
+.center{
+width:95px;
+height:95px;
+border-radius:50%;
+background:linear-gradient(145deg,#FFD700,#FF9800);
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:24px;
+font-weight:900;
+color:#111;
+cursor:pointer;
+z-index:20;
+box-shadow:
+0 0 20px gold,
+0 0 40px #00d4ff;
+transition:.2s;
+}
 
+.center:active{
+transform:scale(.95);
+}
+
+.wheel{
+transition:transform 5s cubic-bezier(.17,.67,.12,.99);
+  }
+function spinWheel(){
+
+let wheel=document.querySelector(".wheel");
+
+let deg=Math.floor(Math.random()*360)+3600;
+
+wheel.style.transform="rotate("+deg+"deg)";
+
+}
 </style>
 
 </head>
@@ -270,18 +304,9 @@ FREE SPIN
 ▼
 </div>
 
-<div class="wheel">
-
-<div class="slice s1"><span>100</span></div>
-<div class="slice s2"><span>200</span></div>
-<div class="slice s3"><span>300</span></div>
-<div class="slice s4"><span>400</span></div>
-<div class="slice s5"><span>500</span></div>
-<div class="slice s6"><span>600</span></div>
-<div class="slice s7"><span>700</span></div>
-<div class="slice s8"><span>800</span></div>
-<div class="slice s9"><span>900</span></div>
-<div class="slice s10"><span>1000</span></div>
+<div class="center" onclick="spinWheel()">
+SPIN
+</div>
 
 <div class="center">
 SPIN
