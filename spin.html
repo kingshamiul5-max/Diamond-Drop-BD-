@@ -4,9 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Diamond Drop BD - Spin</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 
 *{
@@ -17,311 +15,152 @@ font-family:'Orbitron',sans-serif;
 }
 
 body{
-
-background:
-linear-gradient(rgba(0,0,0,.82),rgba(0,0,0,.88)),
-url("https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1600");
-
-background-size:cover;
-background-position:center;
-
-height:100vh;
+background:#050816;
 overflow:hidden;
 color:white;
-
+height:100vh;
+}
+.bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:
+linear-gradient(rgba(5,8,22,.85),rgba(5,8,22,.9)),
+url("https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1600");
+background-size:cover;
+background-position:center;
+z-index:-3;
+animation:bgZoom 12s infinite alternate;
 }
 
-/* Animated Glow */
-
-body::before{
-
-content:"";
-
-position:absolute;
-
-width:500px;
-height:500px;
-
-background:#00d4ff30;
-
-border-radius:50%;
-
-filter:blur(100px);
-
-left:-120px;
-top:-120px;
-
-animation:move1 8s infinite alternate;
-
-}
-
-body::after{
-
-content:"";
-
-position:absolute;
-
-width:450px;
-height:450px;
-
-background:#ffd70022;
-
-border-radius:50%;
-
-filter:blur(100px);
-
-right:-120px;
-bottom:-120px;
-
-animation:move2 8s infinite alternate;
-
-}
-
-@keyframes move1{
-
-100%{
-
-transform:translate(120px,120px);
-
-}
-
-}
-
-@keyframes move2{
-
-100%{
-
-transform:translate(-120px,-100px);
-
-}
-
-}
-
-.header{
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-padding:20px;
-
-}
-
-.logo{
-
-font-size:26px;
-font-weight:900;
-
-background:linear-gradient(to right,#00d4ff,#ffd700);
-
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-
-}
-
-.timer{
-
-padding:12px 18px;
-
-border-radius:18px;
-
-background:rgba(255,255,255,.08);
-
-backdrop-filter:blur(15px);
-
-border:1px solid rgba(255,255,255,.12);
-
-font-size:12px;
-
-text-align:center;
-
+@keyframes bgZoom{
+0%{transform:scale(1);}
+100%{transform:scale(1.08);}
 }
 
 .container{
-
-height:calc(100vh - 90px);
-
+width:100%;
+height:100vh;
 display:flex;
-
-justify-content:center;
-
-align-items:center;
-
 flex-direction:column;
+align-items:center;
+justify-content:center;
+}
 
+.top{
+position:absolute;
+top:20px;
+left:20px;
+right:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.top h1{
+font-size:24px;
+background:linear-gradient(90deg,#00d4ff,#ffd700);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.timer{
+padding:12px 18px;
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.15);
+border-radius:16px;
+backdrop-filter:blur(15px);
+text-align:center;
+font-size:13px;
 }
 
 .pointer{
-
-font-size:55px;
-
-color:#ff2b2b;
-
-margin-bottom:-10px;
-
-z-index:10;
-
+width:0;
+height:0;
+border-left:18px solid transparent;
+border-right:18px solid transparent;
+border-top:35px solid red;
+margin-bottom:10px;
+z-index:5;
 }
 
 .wheel{
-
 width:320px;
 height:320px;
-
 border-radius:50%;
-
 border:8px solid gold;
-
-background:
-
-conic-gradient(
-
-#00d4ff 0deg 36deg,
-#101010 36deg 72deg,
-#00d4ff 72deg 108deg,
-#101010 108deg 144deg,
-#00d4ff 144deg 180deg,
-#101010 180deg 216deg,
-#00d4ff 216deg 252deg,
-#101010 252deg 288deg,
-#00d4ff 288deg 324deg,
-#101010 324deg 360deg
-
-);
-
-box-shadow:
-
-0 0 30px #00d4ff,
-
-0 0 60px #ffd70055;
-
+background:conic-gradient(#00d4ff,#0a0a0a,#00d4ff,#0a0a0a,#00d4ff,#0a0a0a,#00d4ff,#0a0a0a,#00d4ff,#0a0a0a);
 display:flex;
-
 justify-content:center;
-
 align-items:center;
-
-position:relative;
-
+box-shadow:0 0 25px #00d4ff,0 0 50px rgba(255,215,0,.5);
 }
 
 .center{
-
 width:95px;
 height:95px;
-
 border-radius:50%;
-
-background:linear-gradient(145deg,#ffd700,#ff9900);
-
+background:linear-gradient(#ffd700,#ff9800);
 display:flex;
-
 justify-content:center;
-
 align-items:center;
-
 font-weight:bold;
-
 font-size:22px;
-
-color:black;
-
-cursor:pointer;
-
-}
-
-.note{
-
-margin-top:30px;
-
-font-size:13px;
-
-opacity:.8;
-
-}
-.center{
-width:95px;
-height:95px;
-border-radius:50%;
-background:linear-gradient(145deg,#FFD700,#FF9800);
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:24px;
-font-weight:900;
 color:#111;
 cursor:pointer;
-z-index:20;
-box-shadow:
-0 0 20px gold,
-0 0 40px #00d4ff;
-transition:.2s;
-}
-
-.center:active{
-transform:scale(.95);
+  }
+  #spinBtn:hover{
+transform:scale(1.08);
+box-shadow:0 0 20px gold,0 0 40px #00d4ff;
 }
 
 .wheel{
-transition:transform 5s cubic-bezier(.17,.67,.12,.99);
-  }
-function spinWheel(){
+transition:transform 5s cubic-bezier(.17,.67,.15,1);
+}
+</style>
+</head>
+<body>
+<div class="bg"></div>
 
-let wheel=document.querySelector(".wheel");
+<div class="container">
+
+    <!-- Logo -->
+    <div class="top">
+        <h1>💎 Diamond Drop BD</h1>
+
+        <div class="timer">
+            FREE SPIN
+            <br>
+            <span id="timer">23:59:59</span>
+        </div>
+    </div>
+
+    <!-- Pointer -->
+    <div class="pointer"></div>
+
+    <!-- Wheel -->
+    <div class="wheel" id="wheel">
+
+        <div class="center" id="spinBtn">
+            SPIN
+        </div>
+
+    </div>
+
+  </div>
+  <script>
+const wheel=document.getElementById("wheel");
+const spinBtn=document.getElementById("spinBtn");
+
+spinBtn.onclick=function(){
 
 let deg=Math.floor(Math.random()*360)+3600;
 
 wheel.style.transform="rotate("+deg+"deg)";
 
 }
-</style>
-
-</head>
-
-<body>
-
-<div class="header">
-
-<div class="logo">
-💎 Diamond Drop BD
-</div>
-
-<div class="timer">
-
-FREE SPIN
-
-<br>
-
-23:59:59
-
-</div>
-
-</div>
-
-<div class="container">
-
-<div class="pointer">
-▼
-</div>
-
-<div class="center" onclick="spinWheel()">
-SPIN
-</div>
-
-<div class="center">
-SPIN
-  </div>
-
-</div>
-
-<div class="note">
-
-🎮 Daily Free Spin
-
-</div>
-
-</div>
-
+  </script>
 </body>
-
-  </html>
+</html>
