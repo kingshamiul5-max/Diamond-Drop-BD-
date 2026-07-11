@@ -1,1 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diamond Drop BD - Spin</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Orbitron',sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(rgba(0,0,0,.82),rgba(0,0,0,.88)),
+url("https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1600");
+
+background-size:cover;
+background-position:center;
+
+height:100vh;
+overflow:hidden;
+color:white;
+
+}
+
+/* Animated Glow */
+
+body::before{
+
+content:"";
+
+position:absolute;
+
+width:500px;
+height:500px;
+
+background:#00d4ff30;
+
+border-radius:50%;
+
+filter:blur(100px);
+
+left:-120px;
+top:-120px;
+
+animation:move1 8s infinite alternate;
+
+}
+
+body::after{
+
+content:"";
+
+position:absolute;
+
+width:450px;
+height:450px;
+
+background:#ffd70022;
+
+border-radius:50%;
+
+filter:blur(100px);
+
+right:-120px;
+bottom:-120px;
+
+animation:move2 8s infinite alternate;
+
+}
+
+@keyframes move1{
+
+100%{
+
+transform:translate(120px,120px);
+
+}
+
+}
+
+@keyframes move2{
+
+100%{
+
+transform:translate(-120px,-100px);
+
+}
+
+}
+
+.header{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:20px;
+
+}
+
+.logo{
+
+font-size:26px;
+font-weight:900;
+
+background:linear-gradient(to right,#00d4ff,#ffd700);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+}
+
+.timer{
+
+padding:12px 18px;
+
+border-radius:18px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(15px);
+
+border:1px solid rgba(255,255,255,.12);
+
+font-size:12px;
+
+text-align:center;
+
+}
+
+.container{
+
+height:calc(100vh - 90px);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+flex-direction:column;
+
+}
+
+.pointer{
+
+font-size:55px;
+
+color:#ff2b2b;
+
+margin-bottom:-10px;
+
+z-index:10;
+
+}
+
+.wheel{
+
+width:320px;
+height:320px;
+
+border-radius:50%;
+
+border:8px solid gold;
+
+background:
+
+conic-gradient(
+
+#00d4ff 0deg 36deg,
+#101010 36deg 72deg,
+#00d4ff 72deg 108deg,
+#101010 108deg 144deg,
+#00d4ff 144deg 180deg,
+#101010 180deg 216deg,
+#00d4ff 216deg 252deg,
+#101010 252deg 288deg,
+#00d4ff 288deg 324deg,
+#101010 324deg 360deg
+
+);
+
+box-shadow:
+
+0 0 30px #00d4ff,
+
+0 0 60px #ffd70055;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+position:relative;
+
+}
+
+.center{
+
+width:95px;
+height:95px;
+
+border-radius:50%;
+
+background:linear-gradient(145deg,#ffd700,#ff9900);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-weight:bold;
+
+font-size:22px;
+
+color:black;
+
+cursor:pointer;
+
+}
+
+.note{
+
+margin-top:30px;
+
+font-size:13px;
+
+opacity:.8;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<div class="logo">
+💎 Diamond Drop BD
+</div>
+
+<div class="timer">
+
+FREE SPIN
+
+<br>
+
+23:59:59
+
+</div>
+
+</div>
+
+<div class="container">
+
+<div class="pointer">
+▼
+</div>
+
+<div class="wheel">
+
+<div class="center">
+
+SPIN
+
+</div>
+
+</div>
+
+<div class="note">
+
+🎮 Daily Free Spin
+
+</div>
+
+</div>
+
+</body>
+
+  </html>
